@@ -1,10 +1,10 @@
 CREATE TABLE users(
-	id bigint not null auto_increment,
-	first_name varchar (100) not null,
-	last_name varchar (100) not null,
-	sex varchar (100) not null,
-	age int not null,
-	email varchar (100) not null,
+	id BIGINT not null auto_increment,
+	first_name VARCHAR (50) not null,
+	last_name VARCHAR (50) not null,
+	sex ENUM('MALE', 'FEMALE', 'OTHERS') not null,
+	birth_date VARCHAR (50) not null,
+	email VARCHAR (100) not null,
 	
 	primary key (id)
 );

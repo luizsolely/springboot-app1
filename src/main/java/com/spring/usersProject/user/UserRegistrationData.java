@@ -1,5 +1,24 @@
 package com.spring.usersProject.user;
 
-public record UserRegistrationData(String first_name, String last_name, Sex sex, int age, String email) {
+import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
+public record UserRegistrationData(
+		
+		@NotBlank
+		String first_name, 
+		
+		@NotBlank
+		String last_name, 
+		
+		@Enumerated
+		Sex sex, 
+		
+		@NotBlank
+		String birth_date,
+		
+		@Email
+		String email) {
 
 }

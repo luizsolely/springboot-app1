@@ -26,7 +26,7 @@ public class User {
 		this.first_name = data.first_name();
 		this.last_name = data.last_name();
 		this.sex = data.sex();
-		this.age = data.age();
+		this.birth_date = data.birth_date();
 		this.email = data.email();
 	}
 	
@@ -38,7 +38,9 @@ public class User {
 	
 	@Enumerated(EnumType.STRING)
 	private Sex sex;
-	private int age;
+	
+	private String birth_date;
+	
 	private String email;
 	
 }

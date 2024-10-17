@@ -6,6 +6,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -42,5 +43,28 @@ public class User {
 	private String birth_date;
 	
 	private String email;
-	
+
+	public void updateInfo(@Valid UserUpdateData data) {
+		
+		if (data.first_name() != null) {
+			this.first_name = data.first_name();
+		}
+		
+		if (data.last_name() != null) {
+			this.last_name = data.last_name();
+		}
+		
+		if (data.sex() != null) {
+			this.sex = data.sex();
+		}
+		
+		if (data.birth_date() != null) {
+			this.birth_date = data.birth_date();
+		}
+		
+		if (data.email() != null) {
+			this.email = data.email();
+		}
+		
+	}	
 }

@@ -27,31 +27,39 @@ public class UserController {
 
 	@Autowired
 	private UserRepository repository;
-	
+
 	@PostMapping
 	@Transactional
 	public void registerUsers(@RequestBody @Valid UserRegistrationData data) {
 		repository.save(new User(data));
 	}
-	
+
 	@GetMapping
 	public List<UserListingData> listUsers() {
 		return repository.findAll().stream()
+				.filter(user -> user.getActive())
 				.map(UserListingData::new)
 				.toList();
 	}
-	
+
 	@PutMapping
 	@Transactional
-	public void updateUsers(@RequestBody @Valid UserUpdateData data) {	
+	public void updateUsers(@RequestBody @Valid UserUpdateData data) {
 		var user = repository.getReferenceById(data.id());
-		user.updateInfo(data);		
+		user.updateInfo(data);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@Transactional
 	public void deleteUser(@PathVariable Long id) {
 		repository.deleteById(id);
+	}
+
+	@DeleteMapping("status/{id}")
+	@Transactional
+	public void updateUserStatus(@PathVariable Long id) {
+		var user = repository.getReferenceById(id);
+		user.updateStatus();
 	}
 	
 }

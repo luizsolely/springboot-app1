@@ -1,7 +1,9 @@
 package com.spring.usersProject.user;
 
 public enum Sex {
-	MALE,
-	FEMALE,
+	
+	MALE, 
+	FEMALE, 
 	OTHERS
+	
 }
